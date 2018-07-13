@@ -38,6 +38,7 @@ class UsuariosController extends Controller
     public function store(Request $request)
     {
         //
+        return 'Enviado';
     }
 
     /**
