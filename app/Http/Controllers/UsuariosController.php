@@ -26,6 +26,7 @@ class UsuariosController extends Controller
     public function create()
     {
         //
+      return view('usuarios.crear');
     }
 
     /**
@@ -48,6 +49,8 @@ class UsuariosController extends Controller
     public function show($id)
     {
         //
+        $usuario = Usuario::find($id);
+        return view('usuarios.detalle')->with('usuario',$usuario);
     }
 
     /**
