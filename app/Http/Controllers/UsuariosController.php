@@ -38,7 +38,21 @@ class UsuariosController extends Controller
     public function store(Request $request)
     {
         //
-        return 'Enviado';
+        $this->validate($request, [
+            'nombre' => 'required',
+            'email' => 'required',
+            'telefono' => 'required'
+        ]);
+
+        //Crear el usuario
+        $usuario = new Usuario;
+        $usuario->nombre = $request->input('nombre');
+        $usuario->email = $request->input('email');
+        $usuario->telefono = $request->input('telefono');
+
+        $usuario->save();
+        return redirect('/')->with('success','Usuario Agregado');
+
     }
 
     /**
