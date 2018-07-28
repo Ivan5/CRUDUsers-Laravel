@@ -10,7 +10,7 @@
           {{$usuario->telefono}}
         </div>
         <br><br>
-        <a href="usuario/{{$usuario->id}}/edit" class="btn btn-warning">Editar</a>
+        <a href="{{$usuario->id}}/edit" class="btn btn-warning">Editar</a>
       </div>
     </div>
 @endsection

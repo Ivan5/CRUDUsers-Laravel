@@ -76,7 +76,8 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = Usuario::find($id);
+        return view('usuarios.edit')->with('usuario',$usuario);
     }
 
     /**
@@ -89,6 +90,20 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $usuario= Usuario::find($id);
+        $this->validate($request, [
+            'nombre' => 'required',
+            'email' => 'required',
+            'telefono' => 'required'
+        ]);
+
+        //Actualizar el usuario
+        $usuario->nombre = $request->input('nombre');
+        $usuario->email = $request->input('email');
+        $usuario->telefono = $request->input('telefono');
+
+        $usuario->save();
+        return redirect('/')->with('success','Usuario Actualizado');
     }
 
     /**
